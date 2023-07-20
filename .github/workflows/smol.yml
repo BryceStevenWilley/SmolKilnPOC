@@ -17,7 +17,7 @@ jobs:
       - name: Download and start docker
         run: |
           docker pull brycewilley/smoldocassemble
-          docker run --env DA_ADMIN_EMAIL="${{ env.DA_ADMIN_EMAIL }}" --env DA_ADMIN_PASSWORD="${{ env.DA_ADMIN_PASSWORD }}" --env DA_ADMIN_API_KEY="${{ env.DA_ADMIN_API_KEY }} --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 brycewilley/smoldocassemble
+          docker run --env DA_ADMIN_EMAIL="${{ env.DA_ADMIN_EMAIL }}" --env DA_ADMIN_PASSWORD="${{ env.DA_ADMIN_PASSWORD }}" --env DA_ADMIN_API_KEY="${{ env.DA_ADMIN_API_KEY }}" --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 brycewilley/smoldocassemble
           sleep 120
           curl localhost
       - name: Kiln
