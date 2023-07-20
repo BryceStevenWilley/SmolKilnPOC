@@ -16,6 +16,7 @@ jobs:
       - name: Download and start docker
         run: |
           docker pull brycewilley/smoldocassemble
-          docker run --cap-add SYS_PTRACE --memory="4gb" -p 80:80 brycewilley/smoldocassemble
+          docker run --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 brycewilley/smoldocassemble
           sleep 120
           curl localhost
+          docker logs $(docker ps --filter "ancestor=brycewilley/smoldocassemble" --format {{.ID}})
