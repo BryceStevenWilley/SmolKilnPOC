@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Start docassemble
     steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: SuffolkLITLab/docassemble-AssemblyLine
       - name: Download and start docker
         run: |
           docker pull brycewilley/smoldocassemble
