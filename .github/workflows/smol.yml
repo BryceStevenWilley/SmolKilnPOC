@@ -19,9 +19,9 @@ jobs:
           repository: SuffolkLITLab/docassemble-AssemblyLine
       - name: Download and start docker
         run: |
-          docker pull brycewilley/smoldocassemble
-          docker run --env DA_ADMIN_EMAIL="${{ env.DA_ADMIN_EMAIL }}" --env DA_ADMIN_PASSWORD="${{ env.DA_ADMIN_PASSWORD }}" --env DA_ADMIN_API_KEY="${{ env.DA_ADMIN_API_KEY }}" --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 brycewilley/smoldocassemble
-          sleep 120
+          docker pull jhpyle/docassemble
+          docker run --env DA_ADMIN_EMAIL="${{ env.DA_ADMIN_EMAIL }}" --env DA_ADMIN_PASSWORD="${{ env.DA_ADMIN_PASSWORD }}" --env DA_ADMIN_API_KEY="${{ env.DA_ADMIN_API_KEY }}" --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 jhpyle/docassemble
+          sleep 600
           curl localhost
       - name: Kiln
         uses: SuffolkLITLab/ALKiln@start_server_take_2
