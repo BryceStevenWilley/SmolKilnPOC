@@ -1,0 +1,21 @@
+name: Use Smol docassemble
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  DA_ADMIN_EMAIL: example@example.com
+  DA_ADMIN_PASSWORD: password
+
+jobs:
+  da-testing:
+    runs-on: ubuntu-latest
+    name: Start docassemble
+    steps:
+      - name: Download and start docker
+        run: |
+          docker pull brycewilley/smoldocassemble
+          docker run --cap-add SYS_PTRACE --memory="4gb" -p 80:80 brycewilley/smoldocassemble
+          sleep 120
+          curl localhost
