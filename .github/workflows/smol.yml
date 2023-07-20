@@ -23,7 +23,7 @@ jobs:
       - name: Kiln
         uses: SuffolkLITLab/ALKiln@start_server_take_2
         with:
-          SERVER_URL: "localhost"
+          SERVER_URL: "http://localhost"
           DOCASSEMBLE_DEVELOPER_API_KEY: "${{ env.DA_ADMIN_API_KEY }}"
       - name: Docker logs
         run: |
