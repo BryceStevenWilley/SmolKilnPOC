@@ -7,7 +7,7 @@ on:
 env:
   DA_ADMIN_EMAIL: example@example.com
   DA_ADMIN_PASSWORD: password
-  DA_ADMIN_API_KEY: mykey1234
+  DA_ADMIN_API_KEY: abcd1234abcd1234abcd5678abdc5678
 
 jobs:
   da-testing:
