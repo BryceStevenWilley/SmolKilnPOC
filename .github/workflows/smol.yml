@@ -8,6 +8,7 @@ env:
   DA_ADMIN_EMAIL: example@example.com
   DA_ADMIN_PASSWORD: password
   DA_ADMIN_API_KEY: abcd1234abcd1234abcd5678abdc5678
+  CONFIG_CONTENTS: ${{ secsets.DA_CONFIG_FILE_TEXT }}
 
 jobs:
   da-testing:
@@ -16,11 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: SuffolkLITLab/docassemble-AssemblyLine
+          repository: SuffolkLITLab/docassemble-EFSPIntegration
       - name: Download and start docker
         run: |
+          echo "$CONFIG_CONTENTS" > myconfig.yml 
           docker pull brycewilley/smoldocassemble
-          docker run --env DA_ADMIN_EMAIL="${{ env.DA_ADMIN_EMAIL }}" --env DA_ADMIN_PASSWORD="${{ env.DA_ADMIN_PASSWORD }}" --env DA_ADMIN_API_KEY="${{ env.DA_ADMIN_API_KEY }}" --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 brycewilley/smoldocassemble
+          docker run --env DA_ADMIN_EMAIL="${{ env.DA_ADMIN_EMAIL }}" --env DA_ADMIN_PASSWORD="${{ env.DA_ADMIN_PASSWORD }}" --env DA_ADMIN_API_KEY="${{ env.DA_ADMIN_API_KEY }}" --env DA_CONFIG=/tmp/config/myconfig.yml --volume .:/tmp/config --cap-add SYS_PTRACE --memory="4gb" -d -p 80:80 brycewilley/smoldocassemble
           sleep 120
           curl localhost
       - name: Kiln
