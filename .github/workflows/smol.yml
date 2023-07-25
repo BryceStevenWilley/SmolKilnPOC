@@ -8,7 +8,7 @@ env:
   DA_ADMIN_EMAIL: example@example.com
   DA_ADMIN_PASSWORD: password
   DA_ADMIN_API_KEY: abcd1234abcd1234abcd5678abdc5678
-  CONFIG_CONTENTS: ${{ secsets.DA_CONFIG_FILE_TEXT }}
+  CONFIG_CONTENTS: ${{ secrets.DA_CONFIG_FILE_TEXT }}
 
 jobs:
   da-testing:
